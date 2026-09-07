@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consulenza amministrativa e internal auditing, Studio Gallì</title>
+<meta name="description" content="Consulenza amministrativa, controlli di gestione e internal auditing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f7f9;
+  --bg-soft:#eef2f5;
+  --panel:#ffffff;
+  --ink:#152435;
+  --ink-soft:#5b6b7d;
+  --line:#dde4ea;
+  --accent:#1c4f86;
+  --navy:#0d2038;
+  --sky:#8ab8e8;
+  --accent-soft:#dbe7f4;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --wrap:1140px;
+  --r-s:8px;
+  --r-m:14px;
+  --r-l:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+/* ---------- header ---------- */
+.site-head{position:sticky;top:0;z-index:60;background:rgba(245,247,249,.86);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.site-head.is-stuck{border-color:var(--line)}
+.head-in{max-width:var(--wrap);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:var(--serif);font-size:23px;letter-spacing:.01em;text-decoration:none;line-height:1}
+.brand small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;color:var(--ink-soft);margin-top:4px}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{text-decoration:none;font-size:14.5px;color:var(--ink-soft);position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent);transition:right .35s cubic-bezier(.2,.7,.3,1)}
+.nav a:hover{color:var(--ink)}
+.nav a:hover::after,.nav a[aria-current="page"]::after{right:0}
+.nav a[aria-current="page"]{color:var(--ink)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:3px;padding:8px 12px;font:inherit;font-size:13px;cursor:pointer;color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:96px 0 72px}
+.hero .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(21,36,53,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,36,53,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.4vw,66px);line-height:1.06;margin:0 0 20px;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:17.5px;color:var(--ink-soft);max-width:46ch;margin:0 0 30px}
+.skyline{width:100%;height:auto}
+.skyline path{fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.skyline.drawn path{animation:draw 6s cubic-bezier(.3,0,.1,1) .4s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.btn{display:inline-block;text-decoration:none;background:var(--accent);color:#fff;padding:13px 26px;border-radius:999px;font-size:14.5px;transition:background .25s,transform .25s}
+.btn:hover{background:#153d68;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--panel);border-color:var(--accent)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- sezioni ---------- */
+section{padding:78px 0}
+.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,42px);line-height:1.15;margin:0 0 14px}
+.sec-lede{color:var(--ink-soft);max-width:58ch;margin:0 0 38px}
+.band{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band-dark{background:#132133;color:#e9eef4;border:0}
+.band-dark .sec-title{color:#fff}
+.band-dark .sec-lede,.band-dark p{color:#9fb2c6}
+
+/* ---------- contatori ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden}
+.stat{background:var(--bg);padding:28px 22px}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--accent);margin-bottom:8px}
+.stat span{font-size:13.5px;color:var(--ink-soft);line-height:1.5;display:block}
+
+/* ---------- carosello aree ---------- */
+.track{scroll-behavior:smooth}
+.carousel .track{cursor:grab}
+.carousel{position:relative}
+.track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.acard{flex:0 0 320px;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:30px 28px;display:flex;flex-direction:column;min-height:270px;transition:border-color .3s,transform .3s,box-shadow .3s}
+.acard:hover,.acard:focus-within{border-color:var(--accent);background:linear-gradient(165deg,#1c4f86,#143c68);transform:translateY(-5px);box-shadow:0 20px 40px rgba(28,79,134,.22)}
+.acard:hover h3,.acard:focus-within h3{color:#fff}
+.acard:hover ul,.acard:focus-within ul{color:#c6d8ea}
+.acard:hover .tag,.acard:focus-within .tag{color:#9dc2e6;border-top-color:rgba(255,255,255,.2)}
+.acard h3,.acard ul,.acard .tag{transition:color .3s}
+.acard h3{font-family:var(--serif);font-weight:400;font-size:25px;margin:0 0 12px;line-height:1.2}
+.acard ul{margin:0 0 18px;padding-left:18px;color:var(--ink-soft);font-size:14.5px}
+.acard ul li{margin-bottom:5px}
+.acard .tag{margin-top:auto;font-size:12px;color:var(--accent);border-top:1px solid var(--line);padding-top:14px}
+.car-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+.car-nav button{width:42px;height:42px;border:1px solid var(--line);background:var(--panel);border-radius:50%;cursor:pointer;font-size:17px;color:var(--ink);transition:border-color .25s,background .25s}
+.car-nav button:hover{border-color:var(--accent);background:var(--accent-soft)}
+.car-nav button:disabled{opacity:.35;cursor:default}
+
+/* ---------- percorso guidato ---------- */
+.guide{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:34px 32px;max-width:760px}
+.guide h3{font-family:var(--serif);font-weight:400;font-size:27px;margin:0 0 6px}
+.guide p.sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 22px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{border:1px solid var(--line);background:var(--bg);padding:11px 20px;border-radius:999px;cursor:pointer;font:inherit;font-size:14.5px;color:var(--ink);transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.guide-out{margin-top:22px;border-left:2px solid var(--accent);padding-left:18px;display:none}
+.guide-out.show{display:block;animation:fadeup .4s ease both}
+.guide-out b{font-family:var(--serif);font-weight:400;font-size:21px;display:block;margin-bottom:6px}
+.guide-out p{margin:0 0 14px;color:var(--ink-soft);font-size:15px}
+.guide-back{background:none;border:0;padding:0;color:var(--accent);font:inherit;font-size:13.5px;cursor:pointer;text-decoration:underline}
+@keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-delay='1']{transition-delay:.1s}
+.reveal[data-delay='2']{transition-delay:.2s}
+.reveal[data-delay='3']{transition-delay:.3s}
+
+/* ---------- foto ---------- */
+.photo{position:relative;overflow:hidden;border-radius:var(--r-l);background:var(--bg-soft)}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform 9s ease-out}
+.photo.in img{transform:scale(1.06)}
+.full-photo{height:clamp(260px,42vw,460px);border-radius:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px}
+.member{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;text-align:left;padding:0;cursor:pointer;font:inherit;color:inherit;transition:border-color .3s,transform .3s}
+.member:hover{border-color:var(--accent);transform:translateY(-3px)}
+.member .ph{aspect-ratio:4/5;background:linear-gradient(160deg,#e4eaef,#d6e0e6);display:flex;align-items:flex-end;padding:14px;color:#8496a6;font-size:11.5px}
+.member .ph img{width:100%;height:100%;object-fit:cover}
+.member .info{padding:16px 18px 20px}
+.member .info b{font-family:var(--serif);font-weight:400;font-size:20px;display:block}
+.member .info span{font-size:13.5px;color:var(--ink-soft)}
+dialog{border:0;border-radius:var(--r-l);padding:0;max-width:560px;width:92%;background:var(--panel);box-shadow:0 30px 70px rgba(21,36,53,.25)}
+dialog::backdrop{background:rgba(19,33,51,.5)}
+.modal-in{padding:34px 32px}
+.modal-in h3{font-family:var(--serif);font-weight:400;font-size:29px;margin:0 0 4px}
+.modal-in .role{color:var(--accent);font-size:14px;margin:0 0 18px}
+.modal-in p{color:var(--ink-soft);font-size:15px}
+.modal-in ul{color:var(--ink-soft);font-size:15px;padding-left:18px}
+.modal-close{margin-top:8px;background:none;border:1px solid var(--line);padding:9px 20px;font:inherit;font-size:14px;cursor:pointer;border-radius:999px}
+
+/* ---------- aree, elenco pagina servizi ---------- */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.filter{border:1px solid var(--line);background:var(--panel);padding:9px 16px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink-soft);transition:all .25s}
+.filter:hover{border-color:var(--accent)}
+.filter.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px}
+.area{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:30px 28px;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s,border-color .35s}
+.area:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 40px rgba(21,36,53,.09)}
+.area .note{order:-1}
+.area h3{font-family:var(--serif);font-weight:400;font-size:27px;margin:0 0 14px;line-height:1.2}
+.area .note{color:var(--accent);font-size:12.5px;margin:0 0 10px;letter-spacing:.02em}
+.area ul{margin:0;padding-left:20px;color:var(--ink-soft)}
+.area ul li{margin-bottom:8px}
+.area.hide{display:none}
+.area ul{margin-top:auto}
+
+/* ---------- contatti ---------- */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.dl{margin:0}
+.dl div{padding:18px 0;border-bottom:1px solid var(--line)}
+.dl dt{font-size:12.5px;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:6px}
+.dl dd{margin:0;font-size:19px;font-family:var(--serif)}
+.dl dd a{text-decoration:none}
+.dl dd a:hover{color:var(--accent)}
+.map-holder{position:relative;aspect-ratio:4/3;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--r-l);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.map-holder iframe{width:100%;height:100%;border:0}
+.map-cta{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(160deg,#e7edf2,#dbe4ea);cursor:pointer;border:0;font:inherit;color:var(--ink)}
+
+/* ---------- footer ---------- */
+.site-foot{background:#132133;color:#9fb2c6;padding:56px 0 34px;font-size:14.5px}
+.foot-in{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:36px}
+.site-foot a{color:#c9d6e2;text-decoration:none}
+.site-foot a:hover{color:#fff;text-decoration:underline}
+.site-foot .brand{color:#fff}
+.foot-bot{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-in,.split,.contact-grid,.area{grid-template-columns:1fr;gap:30px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .nav{position:fixed;inset:64px 0 auto 0;background:var(--bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px 28px 20px;border-bottom:1px solid var(--line);display:none}
+  .nav.open{display:flex}
+  .nav a{padding:12px 0;width:100%;font-size:17px}
+  .nav-toggle{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .skyline path{stroke-dashoffset:0}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* pausa esplicita del carosello */
+.car-nav .pause{width:auto;padding:0 18px;border-radius:999px;font-size:13px;font-family:var(--sans)}
+
+
+/* ===== carattere piu deciso ===== */
+.logo{height:46px;width:auto;display:block}
+.brand{display:flex;align-items:center;gap:12px}
+.site-head{background:rgba(255,255,255,.9)}
+.site-head.is-stuck{box-shadow:0 6px 24px rgba(13,32,56,.07)}
+.nav a{font-size:14px;font-weight:500;letter-spacing:.01em}
+
+.hero{background:var(--navy);color:#fff;padding:120px 0 96px;margin-bottom:0}
+.hero .grid-bg{background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px)}
+.hero h1{font-size:clamp(46px,7.2vw,88px);line-height:.98;letter-spacing:-.022em;color:#fff}
+.hero h1 em{color:var(--sky)}
+.hero .lede{color:#a9c0d8;font-size:18px}
+.hero .skyline path{stroke:var(--sky);stroke-width:1.6}
+.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.35)}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.hero + .band{background:var(--navy);border:0}
+
+.stats{border:0;background:rgba(255,255,255,.14);border-radius:0}
+.hero + .band .stat{background:var(--navy);padding:38px 26px}
+.hero + .band .stat b{font-size:clamp(48px,6vw,76px);color:#fff}
+.hero + .band .stat span{color:#8ea7c1;font-size:14px}
+
+.sec-title{font-size:clamp(34px,4.6vw,56px);letter-spacing:-.015em}
+.sec-lede{font-size:17.5px}
+.acard h3{font-size:28px}
+.area h3{font-size:29px}
+.band-dark{background:var(--navy)}
+.site-foot{background:var(--navy)}
+.site-foot .brand img{height:40px;filter:brightness(0) invert(1);opacity:.92}
+.guide h3{font-size:31px}
+.filter{font-weight:500}
+.filter.on{background:var(--accent);border-color:var(--accent)}
+.full-photo{height:clamp(320px,52vw,600px)}
+
+
+/* ===== REDESIGN, registro alto contrasto ===== */
+body{font-size:17px}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--sky);z-index:99}
+
+.site-head{background:rgba(13,32,56,.92);border-bottom:1px solid rgba(255,255,255,.12)}
+.site-head .nav a{color:#b7cbe0}
+.site-head .nav a:hover,.site-head .nav a[aria-current="page"]{color:#fff}
+.site-head .nav a::after{background:var(--sky)}
+.logo{height:64px;filter:brightness(0) invert(1)}
+.nav-toggle{color:#fff;border-color:rgba(255,255,255,.35)}
+@media (max-width:900px){.nav{background:var(--navy);border-color:rgba(255,255,255,.12)}}
+
+.hero{padding:132px 0 0;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+.hero-in{display:block}
+.hero h1{font-size:clamp(52px,10.5vw,132px);line-height:.9;letter-spacing:-.035em;max-width:none;margin-bottom:28px}
+.hero .lede{font-size:20px;max-width:52ch;color:#b7cbe0}
+.hero .skyline{margin-top:56px;width:100%}
+.hero .skyline path{stroke-width:1.1;stroke:rgba(138,184,232,.75)}
+.hero .btn-row{margin-top:34px}
+.hero .btn.ghost{padding:16px 34px;font-size:15px;font-weight:500}
+
+.hero + .band .stat b{font-size:clamp(58px,8vw,104px);letter-spacing:-.03em}
+.hero + .band .stat{padding:46px 28px}
+
+section{padding:108px 0}
+.sec-title{font-size:clamp(40px,6vw,78px);line-height:1;letter-spacing:-.03em;margin-bottom:22px}
+.sec-lede{font-size:19px;max-width:52ch}
+
+/* carosello a tre schede */
+.track{gap:24px}
+.acard{flex:0 0 calc((100% - 48px)/3);min-height:320px;padding:36px 32px}
+.acard h3{font-size:30px;letter-spacing:-.015em}
+.acard ul{font-size:15.5px}
+@media (max-width:1000px){.acard{flex:0 0 calc((100% - 24px)/2)}}
+@media (max-width:680px){.acard{flex:0 0 86%}}
+
+.area{padding:38px 34px}
+.area h3{font-size:32px;letter-spacing:-.015em}
+
+.band-dark{padding:132px 0}
+.band-dark .sec-title{font-size:clamp(42px,7vw,92px)}
+
+.member .info b{font-size:23px}
+.guide{border-width:2px;border-color:var(--ink);border-radius:var(--r-l)}
+.guide h3{font-size:36px;letter-spacing:-.02em}
+.btn{font-size:15px;padding:16px 32px;font-weight:500}
+.dl dd{font-size:26px}
+.dl dt{font-size:12px}
+
+
+/* ===== testate di pagina interne e ritmo verticale ===== */
+.page-head{min-height:0;display:block;padding:116px 0 68px}
+.page-head h1{font-size:clamp(44px,7.5vw,92px);line-height:.94;margin:0 0 18px}
+.page-head .lede{font-size:19px;margin:0}
+.page-head .wrap{text-align:left}
+
+section{padding:96px 0}
+section + section{padding-top:0}
+.band + section,section + .band,.band-dark + section{padding-top:96px}
+.band{padding:96px 0}
+.hero + .band{padding:0}
+.band-dark{padding:112px 0}
+.page-head + section{padding-top:56px}
+.split{gap:64px}
+.sec-lede{margin-bottom:44px}
+.areas{margin-bottom:8px}
+.filters{margin-bottom:40px}
+.photo.full-photo{margin:0}
+@media (max-width:900px){
+  .page-head{padding:96px 0 52px}
+  section{padding:72px 0}
+  .band-dark{padding:80px 0}
+}
+
+
+/* ===== allineamento a sinistra reale delle testate ===== */
+.hero .wrap,.page-head .wrap,.hero-in{max-width:none;margin:0;padding-left:clamp(28px,5.5vw,80px);padding-right:clamp(28px,5.5vw,80px)}
+.hero h1,.page-head h1{margin-left:0}
+.hero .lede{max-width:56ch}
+.hero .skyline{max-width:1400px;margin-left:0}
+
+/* ===== fotografia del palazzo sfumata a destra ===== */
+.hero{position:relative;isolation:isolate}
+.hero .photo-bg{
+  position:absolute;inset:0;z-index:-2;
+  background-image:url('https://static.wixstatic.com/media/c7559b_b227befc2baf4d6cbde89c72e5dd6333~mv2_d_2000_1500_s_2.jpg/v1/fill/w_1600,h_1200,al_c,q_85,enc_avif,quality_auto/c7559b_b227befc2baf4d6cbde89c72e5dd6333~mv2_d_2000_1500_s_2.jpg');
+  background-size:cover;background-position:center right;
+}
+.hero .photo-veil{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(90deg,var(--navy) 0%,var(--navy) 34%,rgba(13,32,56,.92) 52%,rgba(13,32,56,.68) 70%,rgba(13,32,56,.42) 88%,rgba(13,32,56,.3) 100%),
+    linear-gradient(180deg,rgba(13,32,56,.5),rgba(13,32,56,.25));
+  backdrop-filter:blur(1.5px);
+}
+.hero .grid-bg{z-index:0;opacity:.5}
+.hero .wrap{position:relative;z-index:1}
+@media (max-width:760px){
+  .hero .photo-veil{background:linear-gradient(180deg,rgba(13,32,56,.95),rgba(13,32,56,.8))}
+}
+.page-head .photo-bg,.page-head .photo-veil{display:none}
+
+
+/* ===== Duomo, piccolo e laterale ===== */
+.hero .skyline.duomo{
+  position:absolute;right:clamp(24px,4vw,72px);bottom:6%;
+  width:clamp(150px,19vw,300px);height:auto;margin:0;max-width:none;
+  opacity:.85;pointer-events:none;z-index:1;
+}
+.hero .skyline.duomo path{stroke-width:.9;stroke:rgba(160,200,240,.85)}
+@media (max-width:820px){.hero .skyline.duomo{position:static;width:180px;margin:40px 0 0;opacity:.7}}
+@media (max-width:900px){.logo{height:54px}}
+
+.member .ph img{width:100%;height:100%;object-fit:cover}
+
+
+/* ============ IMPAGINAZIONE FLUIDA E COERENTE ============ */
+:root{--gutter:clamp(24px,4.2vw,88px);--frame:1560px}
+.wrap,.hero .wrap,.page-head .wrap,.hero-in,.head-in{
+  width:100%;max-width:var(--frame);margin:0 auto;
+  padding-left:var(--gutter);padding-right:var(--gutter);
+}
+body{font-size:clamp(15.5px,1.02vw,17.5px)}
+h1,.hero h1{font-size:clamp(40px,6.4vw,104px);line-height:.96;letter-spacing:-.028em}
+.page-head h1{font-size:clamp(38px,5.2vw,82px)}
+.sec-title{font-size:clamp(30px,3.6vw,62px);line-height:1.04}
+.band-dark .sec-title{font-size:clamp(32px,4vw,68px)}
+.hero .lede{font-size:clamp(16px,1.28vw,21px);max-width:56ch}
+.sec-lede{font-size:clamp(16px,1.15vw,19px)}
+section{padding:clamp(56px,6vw,104px) 0}
+.band{padding:clamp(56px,6vw,104px) 0}
+.band-dark{padding:clamp(64px,7vw,120px) 0}
+.page-head{padding:clamp(96px,9vw,140px) 0 clamp(40px,4vw,64px)}
+.hero{min-height:0;padding:clamp(104px,10vw,156px) 0 clamp(48px,5vw,80px)}
+
+/* ============ TESTATA CON FOTO CHE PROSEGUE SOTTO I DATI ============ */
+.hero-block{position:relative;overflow:hidden;background:var(--navy)}
+.hero-block .photo-bg{position:absolute;inset:0;background-size:cover;background-position:center 35%}
+.hero-block .photo-veil{position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(13,32,56,.96) 0%,rgba(13,32,56,.9) 28%,rgba(13,32,56,.74) 52%,rgba(13,32,56,.56) 76%,rgba(13,32,56,.46) 100%),
+    linear-gradient(180deg,rgba(13,32,56,.28) 0%,rgba(13,32,56,.24) 50%,rgba(13,32,56,.38) 100%);
+}
+.hero-block .grid-bg{position:absolute;inset:0;opacity:.45}
+.hero-block > .hero,.hero-block > .band{position:relative;z-index:1;background:transparent;border:0}
+.hero-block .stats{background:transparent;border:0;border-radius:0;gap:0}
+.hero-block .stat{background:transparent;border-left:1px solid rgba(255,255,255,.16);padding:clamp(26px,3vw,44px) clamp(20px,2.4vw,40px)}
+.hero-block .stat:first-child{border-left:0;padding-left:0}
+.hero-block .stat b{font-size:clamp(44px,5.4vw,92px);color:#fff;text-shadow:0 2px 22px rgba(9,22,40,.55)}
+.hero-block .stat span{color:#c2d3e4}
+.hero-block .band{padding:0 0 clamp(48px,5vw,84px)}
+.hero .photo-bg,.hero .photo-veil{display:none}
+@media (max-width:760px){
+  .hero-block .photo-veil{background:linear-gradient(180deg,rgba(13,32,56,.92),rgba(13,32,56,.86))}
+  .hero-block .stats{grid-template-columns:1fr 1fr}
+  .hero-block .stat{border-left:0}
+}
+
+/* ============ LOGO ============ */
+.logo{height:clamp(58px,4.4vw,78px)}
+.head-in{padding-top:14px;padding-bottom:14px}
+
+/* ============ CAROSELLO CONTINUO ============ */
+.marquee{overflow:hidden;position:relative;width:100%}
+.marquee-track{display:flex;gap:24px;width:max-content;animation:slide 32s linear infinite}
+.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 12px))}}
+.marquee .acard{flex:0 0 clamp(300px,calc((100% - 48px)/3),480px);min-height:clamp(320px,25vw,400px);padding:clamp(28px,2.3vw,40px)}
+.marquee .acard h3{font-size:clamp(24px,1.9vw,32px)}
+.car-nav{display:none}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* ============ PAGINE AREA E NEWS ============ */
+.prose{max-width:74ch}
+.prose h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.4vw,38px);margin:48px 0 14px;letter-spacing:-.015em}
+.prose p{margin:0 0 18px;color:var(--ink-soft)}
+.prose ul{color:var(--ink-soft);padding-left:20px;margin:0 0 18px}
+.prose li{margin-bottom:9px}
+.norm{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r-m);padding:22px 26px;margin:26px 0;font-size:15.5px;color:var(--ink-soft)}
+.norm b{color:var(--ink);font-weight:600;display:block;margin-bottom:6px;font-size:14px;letter-spacing:.02em}
+.area-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+.area-nav a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:14px;color:var(--ink-soft);background:var(--panel)}
+.area-nav a:hover{border-color:var(--accent);color:var(--ink)}
+.news-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+.news-item{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:30px 28px}
+.news-item time{font-size:12.5px;letter-spacing:.08em;color:var(--accent)}
+.news-item h3{font-family:var(--serif);font-weight:400;font-size:25px;margin:10px 0 10px;line-height:1.25}
+.news-item p{color:var(--ink-soft);font-size:15px;margin:0}
+.empty{border:1px dashed var(--line);border-radius:var(--r-l);padding:40px;color:var(--ink-soft);text-align:center}
+
+/* ============ MODULO CONTATTI ============ */
+.form{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:clamp(26px,2.6vw,40px)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:7px}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid var(--line);border-radius:var(--r-s);padding:13px 15px;
+  font:inherit;font-size:16px;color:var(--ink);background:var(--bg);
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.field textarea{min-height:140px;resize:vertical}
+.privacy{font-size:13px;color:var(--ink-soft);margin:14px 0 20px;line-height:1.55}
+.form button{border:0;cursor:pointer}
+
+/* il nastro deve restare orizzontale in ogni caso */
+.marquee{overflow:hidden}
+.marquee-track{display:flex!important;flex-wrap:nowrap!important;width:max-content}
+.marquee-track > .acard{flex-shrink:0}
+@media (max-width:1000px){.marquee .acard{flex-basis:clamp(280px,58vw,420px)}}
+@media (max-width:640px){.marquee .acard{flex-basis:82vw}}
+
+/* dati sopra la fotografia, senza pannello opaco */
+.hero-block .stats,.hero-block .stat{background:transparent!important;box-shadow:none}
+.hero-block .stat span{text-shadow:0 1px 12px rgba(9,22,40,.6)}
+/* schede del nastro cliccabili per intero */
+a.acard{text-decoration:none;color:inherit;display:flex}
+a.acard h3{color:var(--ink)}
+a.acard:hover h3{color:#fff}
+/* news a tutta larghezza */
+.news-wide{max-width:none}
+.news-list{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+
+
+/* ===== testi a piena larghezza nelle pagine interne ===== */
+.prose,.prose p,.prose ul,.prose h2,.news-wide{max-width:none}
+.prose p,.prose li{max-width:none}
+.norm{max-width:none}
+
+/* ===== La storia, sezione a piena pagina ===== */
+.story{padding:0;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.story-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;min-height:clamp(380px,44vw,560px)}
+.story-photo{position:relative;overflow:hidden;border-radius:0}
+.story-photo img{width:100%;height:100%;object-fit:cover}
+.story-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,32,56,.45) 0%,rgba(13,32,56,.25) 55%,var(--bg-soft) 100%)}
+.story-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(36px,4vw,72px) var(--gutter) clamp(36px,4vw,72px) clamp(28px,3vw,56px)}
+.story-text .sec-title{margin-bottom:18px}
+.story-text p{color:var(--ink-soft);margin:0 0 16px;max-width:60ch}
+@media (max-width:900px){
+  .story-in{grid-template-columns:1fr}
+  .story-photo{height:240px}
+  .story-photo::after{background:linear-gradient(180deg,rgba(13,32,56,.35),var(--bg-soft))}
+  .story-text{padding:36px var(--gutter)}
+}
+
+/* ===== ritratto di Beatrice piu contenuto ===== */
+.bio-photo{max-width:clamp(240px,26vw,340px);margin-left:auto}
+
+/* ===== team su quattro colonne piene ===== */
+.team{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,1.6vw,26px)}
+@media (max-width:900px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.team{grid-template-columns:1fr}}
+
+/* schede news cliccabili */
+a.news-item{display:block;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s,box-shadow .3s}
+a.news-item:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 16px 34px rgba(21,36,53,.08)}
+
+/* banner cookie */
+.cbanner{position:fixed;left:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,28px);
+  z-index:200;background:var(--navy);color:#dbe5ef;border-radius:var(--r-l);
+  box-shadow:0 24px 60px rgba(9,22,40,.35);padding:22px 26px;display:none;
+  gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;max-width:1100px;margin:0 auto;font-size:14.5px}
+.cbanner.show{display:flex}
+.cbanner p{margin:0;max-width:64ch;line-height:1.6}
+.cbanner a{color:#a8c6e6}
+.cbanner .actions{display:flex;gap:10px;flex-wrap:wrap}
+.cbanner button{border-radius:999px;padding:11px 22px;font:inherit;font-size:14px;cursor:pointer;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff}
+.cbanner button.primary{background:#fff;color:var(--navy);border-color:#fff}
+
+/* stacco fra testata blu e sezione La storia */
+.page-head + .story{padding-top:clamp(48px,5vw,88px)}
+/* ritratto di Beatrice, riempie la cornice */
+.bio-photo{max-width:clamp(300px,34vw,460px);aspect-ratio:4/5;background:#fff;border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;margin-left:auto}
+.bio-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transform:none!important}
+
+/* albi, iscrizioni e certificazioni */
+.creds{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:34px}
+.cred{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.cred svg{flex:0 0 30px;width:30px;height:30px;color:var(--accent)}
+.cred b{display:block;font-size:15px;font-weight:600;margin-bottom:3px;line-height:1.3}
+.cred span{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.band-dark .cred{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.band-dark .cred b{color:#fff}
+.band-dark .cred span{color:#9fb2c6}
+.band-dark .cred svg{color:var(--sky)}
+/* blocco specializzazione */
+.spec{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,4vw,72px);align-items:start}
+.spec ul{margin:0;padding-left:20px;color:#9fb2c6}
+.spec li{margin-bottom:10px}
+@media (max-width:900px){.spec{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="index.html"><img class="logo" src="https://static.wixstatic.com/media/c7559b_f82a4abbc6d147d4b0d443c6a694701a.png/v1/fill/w_967,h_399,al_c,q_90,enc_avif,quality_auto/c7559b_f82a4abbc6d147d4b0d443c6a694701a.png" alt="Studio Gallì"></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a>
+      <a href="studio.html">Lo Studio</a>
+      <a href="servizi.html" aria-current="page">Aree di attività</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero page-head">
+    <div class="wrap">
+      <h1>Consulenza<br>amministrativa</h1>
+      <p class="lede">Supporto continuativo alla gestione amministrativa, controlli periodici e internal auditing.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="prose">
+        <h2>Consulenza amministrativa</h2>
+        <p>Lo studio affianca imprese e professionisti nella gestione amministrativa ordinaria, con un supporto continuativo che riduce il carico interno e mantiene la contabilità allineata agli obblighi di legge.</p>
+        <ul>
+          <li>analisi economico finanziaria a supporto degli investimenti aziendali</li>
+          <li>controlli periodici di gestione</li>
+          <li>servizi di segreteria societaria e contabilità</li>
+        </ul>
+
+        <h2>Internal auditing</h2>
+        <p>L'internal auditing verifica l'adeguatezza delle procedure interne ed esterne in specifiche situazioni aziendali, così da pianificare al meglio le attività da realizzare e prevenire criticità operative.</p>
+        <ul>
+          <li>revisione dei dati e dei flussi aziendali</li>
+          <li>consulenza sulle procedure interne ed esterne</li>
+          <li>consulenze tecniche specifiche</li>
+        </ul>
+        <div class="norm"><b>RIFERIMENTI NORMATIVI</b>Articolo 2086, secondo comma, del Codice civile sugli assetti organizzativi, amministrativi e contabili adeguati; decreto legislativo 8 giugno 2001 numero 231 per i modelli di organizzazione, gestione e controllo.</div>
+      <div class="area-nav">
+        <a href="servizi.html">Tutte le aree</a>
+        <a href="area-bilancio.html">Bilancio e revisione</a>
+        <a href="area-fiscale.html">Fiscale e tributario</a>
+        <a href="area-societa.html">Società e startup</a>
+        <a href="area-valutazioni.html">Valutazioni</a>
+        <a href="area-amministrativa.html">Amministrativa</a>
+        <a href="contatti.html">Contatti</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-in">
+    <div>
+      <div class="brand"><img src="https://static.wixstatic.com/media/c7559b_f82a4abbc6d147d4b0d443c6a694701a.png/v1/fill/w_967,h_399,al_c,q_90,enc_avif,quality_auto/c7559b_f82a4abbc6d147d4b0d443c6a694701a.png" alt="Studio Gallì"></div>
+      <p>Consulenza fiscale, contabile e aziendale per società e persone fisiche.</p>
+    </div>
+    <div>
+      <p><a href="index.html">Home</a><br>
+      <a href="studio.html">Lo Studio</a><br>
+      <a href="servizi.html">Aree di attività</a><br>
+      <a href="contatti.html">Contatti</a></p>
+    </div>
+    <div>
+      <p>Via Caradosso 18<br>20123 Milano (MI)<br>
+      <a href="tel:+390243998679">02 4399 8679</a><br>
+      <a href="contatti.html">Modulo di contatto</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-bot">
+    <span>P.IVA 03217370968</span>
+    <span class="foot-links">
+      <a href="studio.html#credenziali">Membership</a>
+      <a href="news.html">News</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="cookie.html">Cookie</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* Studio Gallì, interazioni comuni */
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* barra di avanzamento lettura */
+  var bar = document.createElement('div');
+  bar.className = 'progress';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  /* menu mobile */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  /* header con bordo allo scroll */
+  var head = document.querySelector('.site-head');
+  if (head) {
+    var onScroll = function () {
+      head.classList.toggle('is-stuck', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* skyline: lunghezza reale dei tracciati per il disegno */
+  document.querySelectorAll('.skyline path').forEach(function (p) {
+    var len = Math.ceil(p.getTotalLength());
+    p.style.setProperty('--len', len);
+  });
+
+  /* contatori */
+  function countUp(el) {
+    var target = parseFloat(el.dataset.count);
+    var suffix = el.dataset.suffix || '';
+    if (reduce) { el.textContent = target + suffix; return; }
+    var start = performance.now();
+    var dur = 1400;
+    function step(now) {
+      var t = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* osservatore unico per reveal, contatori, skyline, foto */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('in');
+      if (el.classList.contains('skyline')) el.classList.add('drawn');
+      if (el.dataset.count) countUp(el);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .skyline, .photo, [data-count]').forEach(function (el) {
+    io.observe(el);
+  });
+
+  /* carosello aree */
+  document.querySelectorAll('.carousel').forEach(function (car) {
+    var track = car.querySelector('.track');
+    var prev = car.querySelector('[data-dir="prev"]');
+    var next = car.querySelector('[data-dir="next"]');
+    if (!track) return;
+    function step() {
+      var card = track.querySelector('.acard');
+      return card ? card.offsetWidth + 20 : 340;
+    }
+    function sync() {
+      if (!prev || !next) return;
+      prev.disabled = track.scrollLeft < 8;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+    }
+    if (prev) prev.addEventListener('click', function () { manuale(); track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { manuale(); track.scrollBy({ left: step(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', sync, { passive: true });
+    sync();
+
+    /* scorrimento automatico, con pausa su hover, focus, tocco e fuori schermo */
+    var timer = null, inPausa = false, fermatoDaUtente = false, visibile = true;
+    function avanza() {
+      if (inPausa || fermatoDaUtente || !visibile || document.hidden) return;
+      var fine = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+      track.scrollTo({ left: fine ? 0 : track.scrollLeft + step(), behavior: 'smooth' });
+    }
+    function avvia() { if (!timer && !reduce) timer = setInterval(avanza, 4200); }
+    function manuale() { fermatoDaUtente = true; if (pausaBtn) pausaBtn.textContent = 'Riprendi'; }
+
+    var pausaBtn = car.querySelector('.pause');
+    if (pausaBtn) {
+      pausaBtn.addEventListener('click', function () {
+        fermatoDaUtente = !fermatoDaUtente;
+        pausaBtn.textContent = fermatoDaUtente ? 'Riprendi' : 'Pausa';
+        pausaBtn.setAttribute('aria-pressed', fermatoDaUtente ? 'true' : 'false');
+      });
+    }
+    ['mouseenter', 'focusin', 'touchstart', 'pointerdown'].forEach(function (ev) {
+      car.addEventListener(ev, function () { inPausa = true; }, { passive: true });
+    });
+    ['mouseleave', 'focusout'].forEach(function (ev) {
+      car.addEventListener(ev, function () { inPausa = false; }, { passive: true });
+    });
+    new IntersectionObserver(function (es) {
+      visibile = es[0].isIntersecting;
+    }, { threshold: 0.3 }).observe(car);
+    avvia();
+  });
+
+  /* percorso guidato */
+  var guide = document.querySelector('.guide');
+  if (guide) {
+    var out = guide.querySelector('.guide-out');
+    var opts = guide.querySelector('.opts');
+    var risposte = {
+      societa: {
+        t: 'Società, startup e società benefit',
+        p: 'Costituzione e strutturazione societaria, governance e compliance, supporto alle operazioni early stage. È la specializzazione dello studio.',
+        h: 'area-societa.html'
+      },
+      bilancio: {
+        t: 'Bilancio, contabilità e revisione',
+        p: 'Redazione del bilancio e revisione legale dei conti, inclusa la revisione degli enti locali e il reporting di sostenibilità.',
+        h: 'area-bilancio.html'
+      },
+      fisco: {
+        t: 'Consulenza fiscale e tributaria',
+        p: 'Pianificazione fiscale per società e persone fisiche, assistenza nel contenzioso tributario.',
+        h: 'area-fiscale.html'
+      },
+      valutazioni: {
+        t: 'Operazioni straordinarie e valutazioni',
+        p: 'Valutazioni d\u0027azienda, con l\u0027esperienza di Consulente Tecnico del Tribunale di Milano, e due diligence.',
+        h: 'area-valutazioni.html'
+      }
+    };
+    guide.addEventListener('click', function (ev) {
+      var b = ev.target.closest('.opt');
+      if (b && out) {
+        var r = risposte[b.dataset.key];
+        if (!r) return;
+        out.innerHTML = '<b>' + r.t + '</b><p>' + r.p + '</p>' +
+          '<a class="btn" href="' + r.h + '">Vedi l\u0027area</a> ' +
+          '<button class="guide-back" type="button">Cambia risposta</button>';
+        out.classList.add('show');
+        if (opts) opts.style.display = 'none';
+      }
+      if (ev.target.classList.contains('guide-back')) {
+        out.classList.remove('show');
+        if (opts) opts.style.display = '';
+      }
+    });
+  }
+
+  /* filtri aree di attività */
+  var filters = document.querySelectorAll('.filter');
+  if (filters.length) {
+    filters.forEach(function (f) {
+      f.addEventListener('click', function () {
+        filters.forEach(function (x) { x.classList.remove('on'); });
+        f.classList.add('on');
+        var key = f.dataset.filter;
+        document.querySelectorAll('.area').forEach(function (a) {
+          var show = key === 'tutti' || (a.dataset.for || '').split(' ').indexOf(key) > -1;
+          a.classList.toggle('hide', !show);
+        });
+      });
+    });
+  }
+
+  /* schede team */
+  var dlg = document.getElementById('member-dialog');
+  if (dlg) {
+    document.querySelectorAll('.member').forEach(function (m) {
+      m.addEventListener('click', function () {
+        dlg.querySelector('h3').textContent = m.dataset.nome;
+        dlg.querySelector('.role').textContent = m.dataset.ruolo;
+        dlg.querySelector('.bio').innerHTML = m.dataset.bio;
+        if (typeof dlg.showModal === 'function') dlg.showModal();
+      });
+    });
+    dlg.querySelector('.modal-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  }
+
+  /* indirizzo email composto lato client, per limitare la raccolta automatica */
+  document.querySelectorAll('a.mailto').forEach(function (a) {
+    var ind = a.dataset.u + String.fromCharCode(64) + a.dataset.d;
+    a.href = 'mail' + 'to:' + ind;
+    a.textContent = ind;
+  });
+
+  /* banner cookie e consenso ai contenuti di terze parti */
+  var consenso = null;
+  try { consenso = localStorage.getItem('sg-consenso'); } catch (e) { consenso = null; }
+  if (!consenso) {
+    var b = document.createElement('div');
+    b.className = 'cbanner show';
+    b.innerHTML = '<p>Questo sito utilizza solo cookie tecnici. La mappa nella pagina Contatti è fornita da Google e viene caricata unicamente con il consenso dell\'utente. Maggiori informazioni nella <a href="cookie.html">cookie policy</a> e nell\'<a href="privacy.html">informativa privacy</a>.</p>' +
+      '<span class="actions"><button type="button" class="solo">Solo cookie tecnici</button><button type="button" class="primary tutti">Accetta contenuti esterni</button></span>';
+    document.body.appendChild(b);
+    b.addEventListener('click', function (ev) {
+      var scelta = ev.target.classList.contains('tutti') ? 'tutti' : (ev.target.classList.contains('solo') ? 'solo' : null);
+      if (!scelta) return;
+      try { localStorage.setItem('sg-consenso', scelta); } catch (e) {}
+      b.classList.remove('show');
+      if (scelta === 'tutti' && window.sgApriMappa) window.sgApriMappa();
+    });
+  }
+
+  /* mappa al clic */
+  var mapBtn = document.querySelector('.map-cta');
+  if (mapBtn) {
+    var apriMappa = function () {
+      var holder = mapBtn.parentElement;
+      if (!holder || holder.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.loading = 'lazy';
+      f.title = 'Mappa, Via Caradosso 18, Milano';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.src = 'https://www.google.com/maps?q=Via%20Caradosso%2018%2C%2020123%20Milano&output=embed';
+      holder.appendChild(f);
+      mapBtn.remove();
+    };
+    mapBtn.addEventListener('click', apriMappa);
+    window.sgApriMappa = apriMappa;
+    if (consenso === 'tutti') apriMappa();
+  }
+});
+
+</script>
+</body>
+</html>
